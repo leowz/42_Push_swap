@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/17 13:17:28 by zweng             #+#    #+#             */
-/*   Updated: 2018/06/17 17:40:34 by zweng            ###   ########.fr       */
+/*   Updated: 2018/06/18 18:52:41 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_array	*stack_a(void);
 t_array	*stack_b(void);
 t_array	*stack_result(void);
 void	delete_stack(void);
+void	stack_exit(void);
 
 void	stack_exec_sa(void);
 void	stack_exec_sb(void);
@@ -47,5 +48,9 @@ void	stack_exec_rr(void);
 void	stack_exec_rra(void);
 void	stack_exec_rrb(void);
 void	stack_exec_rrr(void);
+int		stack_exec_parse(int ac, char **av);
 
+void	stack_print_a(void);
+void	stack_print_b(void);
+void	stack_print_cmd(void);
 #endif

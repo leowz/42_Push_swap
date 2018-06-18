@@ -6,7 +6,7 @@
 #    By: zweng <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 18:11:43 by zweng             #+#    #+#              #
-#    Updated: 2018/06/17 17:56:23 by zweng            ###   ########.fr        #
+#    Updated: 2018/06/18 19:03:28 by zweng            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ STC_PATH = ../stack_folder
 
 STC_HEADER = stack.h
 
-STC_SRC_NAME = stack_r.c stack_s.c stack_p.c stack_rr.c stack_singleton.c
+STC_SRC_NAME = stack_r.c stack_s.c stack_p.c stack_rr.c stack_singleton.c\
+			   stack_exit.c stack_print.c stack_parse.c
 
 HEADER_PATH = includes
 
@@ -39,11 +40,11 @@ OBJ_NAME = $(SRC_NAME:.c=.o) $(STC_SRC_NAME:.c=.o)
 
 CPPFLAGS = -I$(HEADER_PATH) -I$(LIB_PATH)/includes -I$(STC_PATH)
 
-LDFLAGS = -L$(LIB_PATH)
+LDFLAGS = -L$(LIB_PATH) -fsanitize=address
 
 LDLIBS = -lft
 
-CFLAGS =  -Wall -Wextra -Werror
+CFLAGS =  -Wall -Wextra -Werror 
 
 # ----- part automatic -----
 SRCS = $(addprefix $(SRC_PATH)/,$(SRC_NAME)) \
