@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_singleton.c                                  :+:      :+:    :+:   */
+/*   ps_quick_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/17 14:22:11 by zweng             #+#    #+#             */
-/*   Updated: 2018/06/17 17:53:13 by zweng            ###   ########.fr       */
+/*   Created: 2018/06/24 12:25:02 by zweng             #+#    #+#             */
+/*   Updated: 2018/06/24 17:14:24 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int     ps_get_pivot(t_array *stack, int length)
         }
         bubble_sort(x, length);
         i = x[length / 2];
-        ft_memdel(&(void *)x);
+        ft_memdel((void **)&x);
         return (i);
     }
     else { return (-1); }
@@ -57,10 +57,14 @@ int     ps_get_pivot(t_array *stack, int length)
 
 void    ps_quick_sort()
 {
-    t_array *ptr;
-    if ((ptr = stack_a()))
+    t_array *ptr_a;
+    t_array *ptr_b;
+    t_array *ptr_cmd;
+
+    if ((ptr_a = stack_a()) && (ptr_b = stack_b())
+			&& (ptr_cmd = stack_result()))
     {
-        ps_quick_sort_a(ptr->current_size());
+        ps_quick_sort_a(ptr_a, ptr_b, (int)ptr_a->current_size);
     }
     else
     {

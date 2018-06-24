@@ -6,41 +6,49 @@
 #    By: zweng <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 18:11:43 by zweng             #+#    #+#              #
-#    Updated: 2018/06/10 18:13:46 by zweng            ###   ########.fr        #
+#    Updated: 2018/06/24 18:05:27 by zweng            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
 
 # ----- part to change -----
-NAME = checker
+NAME = checker 
 
 LIB_PATH = ../libft
 
 LIB = $(LIB_PATH)/libft.a
 
+STC_PATH = ../stack_folder
+
+STC_HEADER = stack.h
+
+STC_SRC_NAME = stack_r.c stack_s.c stack_p.c stack_rr.c stack_singleton.c\
+			   stack_exit.c stack_print.c stack_parse.c stack_is_sorted.c
+
 HEADER_PATH = includes
 
-HEADER = checker.h 
+HEADER = push_swap.h 
 
 SRC_PATH = srcs
 
-SRC_NAME = 
+SRC_NAME = main.c 
 
 OBJ_PATH = obj
 
-OBJ_NAME = $(SRC_NAME:.c=.o)
+OBJ_NAME = $(SRC_NAME:.c=.o) $(STC_SRC_NAME:.c=.o)
 
-CPPFLAGS = -I$(HEADER_PATH) -I$(LIB_PATH)/includes
+CPPFLAGS = -I$(HEADER_PATH) -I$(LIB_PATH)/includes -I$(STC_PATH)
 
-LDFLAGS = -L$(LIB_PATH)
+LDFLAGS = -L$(LIB_PATH) -fsanitize=address
 
 LDLIBS = -lft
 
-CFLAGS =  -Wall -Wextra -Werror
+CFLAGS =  -Wall -Wextra -Werror 
 
 # ----- part automatic -----
-SRCS = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
+SRCS = $(addprefix $(SRC_PATH)/,$(SRC_NAME)) \
+	   $(addprefix $(STC_PATH)/,$(STC_SRC_NAME))
 OBJS = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 # ----- Colors -----
@@ -63,7 +71,10 @@ $(NAME): $(LIB) $(OBJS)
 $(LIB):
 	@make -C $(LIB_PATH) fclean && make -C $(LIB_PATH)
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEADER) | $(OBJ_PATH)
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c  $(HEADER_PATH)/$(HEADER) | $(OBJ_PATH)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+
+$(OBJ_PATH)/%.o: $(STC_PATH)/%.c  $(STC_PATH)/$(STC_HEADER) | $(OBJ_PATH)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 $(OBJ_PATH):

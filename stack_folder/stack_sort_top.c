@@ -1,22 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_print.c                                         :+:      :+:    :+:   */
+/*   stack_sort_top.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/24 12:24:53 by zweng             #+#    #+#             */
-/*   Updated: 2018/06/24 17:58:18 by zweng            ###   ########.fr       */
+/*   Created: 2018/06/24 14:52:28 by zweng             #+#    #+#             */
+/*   Updated: 2018/06/24 14:52:35 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void    ps_print(void)
-{
-    //stack_print_a();
-    //stack_print_b();
-    //stack_print_cmd();
-    ft_printf("cmd size: %d\n", stack_result()->current_size);
-}
-
+#include "stack.h"

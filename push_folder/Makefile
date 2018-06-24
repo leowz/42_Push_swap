@@ -6,7 +6,7 @@
 #    By: zweng <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 18:11:43 by zweng             #+#    #+#              #
-#    Updated: 2018/06/18 19:03:28 by zweng            ###   ########.fr        #
+#    Updated: 2018/06/24 17:20:01 by zweng            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ HEADER = push_swap.h
 SRC_PATH = srcs
 
 SRC_NAME = main.c ps_print.c ps_quick_sort.c ps_insert_sort.c ps_small_sort.c\
-            ps_sort.c
+            ps_sort.c ps_quick_sort_a.c ps_quick_sort_b.c\
+			ps_sort_top.c
 
 OBJ_PATH = obj
 

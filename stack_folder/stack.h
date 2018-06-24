@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/17 13:17:28 by zweng             #+#    #+#             */
-/*   Updated: 2018/06/18 18:52:41 by zweng            ###   ########.fr       */
+/*   Updated: 2018/06/24 17:36:48 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,9 @@ void	stack_exec_rrr(void);
 
 int		stack_exec_parse(int ac, char **av);
 int 	stack_is_sorted(t_array *stack);
-int 	stack_is_reverse_sorted(t_array *stack);
+int 	stack_is_reverse_sorted(t_array *stack, int len);
 int     stack_at(t_array *stack, int index);
+int     stack_peek(t_array *stack);
 
 void	stack_print_a(void);
 void	stack_print_b(void);

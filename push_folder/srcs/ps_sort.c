@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ps_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/10 17:40:53 by zweng             #+#    #+#             */
-/*   Updated: 2018/06/18 19:49:09 by zweng            ###   ########.fr       */
+/*   Created: 2018/06/24 12:25:48 by zweng             #+#    #+#             */
+/*   Updated: 2018/06/24 16:50:14 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,18 @@ void    ps_sort(void)
         }
         else if (ptr->current_size == 3) {
             ft_printf("sort three\n");
-            ps_sort_three_a();
+            //ps_sort_three_a();
+            ps_quick_sort();
         }
         else if (ptr->current_size < 20) {
             ft_printf("sort insert\n");
-            ps_insert_sort();
+            //ps_insert_sort();
+            ps_quick_sort();
         }
         else {
             ft_printf("sort quick\n");
-            ps_insert_sort();
-            //ps_quick_sort();
+            //ps_insert_sort();
+            ps_quick_sort();
         }
     }
     else
