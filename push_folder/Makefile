@@ -24,7 +24,7 @@ STC_PATH = ../stack_folder
 STC_HEADER = stack.h
 
 STC_SRC_NAME = stack_r.c stack_s.c stack_p.c stack_rr.c stack_singleton.c\
-			   stack_exit.c stack_print.c stack_parse.c
+			   stack_exit.c stack_print.c stack_parse.c stack_is_sorted.c
 
 HEADER_PATH = includes
 
@@ -32,7 +32,8 @@ HEADER = push_swap.h
 
 SRC_PATH = srcs
 
-SRC_NAME = main.c 
+SRC_NAME = main.c ps_print.c ps_quick_sort.c ps_insert_sort.c ps_small_sort.c\
+            ps_sort.c
 
 OBJ_PATH = obj
 

@@ -12,15 +12,38 @@
 
 #include "push_swap.h"
 
-int		main(int ac, char **av)
+void    ps_sort(void)
 {
-	if (ac > 1)
-	{
-		stack_exec_parse(ac, av);
-		ps_print();
-		ft_printf("\n\n");
-		ps_sort();
-		ps_print();
-	}
-	return (0);
+    t_array *ptr;
+
+    if ((ptr = stack_a()))
+    {
+        if (stack_is_sorted(ptr)) {
+            ft_printf("stack a is sorted\n");
+            return;
+        }
+        if (ptr->current_size == 2)
+        {
+            ft_printf("stack size 2\n");
+            if (stack_at(ptr, 0) < stack_at(ptr, 1)) {
+                ft_printf("sort stack sa\n");
+                stack_exec_sa();
+            }
+        }
+        else if (ptr->current_size == 3) {
+            ft_printf("sort three\n");
+            ps_sort_three_a();
+        }
+        else if (ptr->current_size < 20) {
+            ft_printf("sort insert\n");
+            ps_insert_sort();
+        }
+        else {
+            ft_printf("sort quick\n");
+            ps_insert_sort();
+            //ps_quick_sort();
+        }
+    }
+    else
+        ft_printf("stack a not exist");
 }

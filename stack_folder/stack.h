@@ -31,6 +31,12 @@ typedef enum		e_cmd
 	pb
 }					t_cmd;
 
+# define   CASE_1 (1)
+# define   CASE_2 (2)
+# define   CASE_3 (3)
+# define   CASE_4 (4)
+# define   CASE_5 (5)
+
 t_array	*stack_a(void);
 t_array	*stack_b(void);
 t_array	*stack_result(void);
@@ -48,7 +54,11 @@ void	stack_exec_rr(void);
 void	stack_exec_rra(void);
 void	stack_exec_rrb(void);
 void	stack_exec_rrr(void);
+
 int		stack_exec_parse(int ac, char **av);
+int 	stack_is_sorted(t_array *stack);
+int 	stack_is_reverse_sorted(t_array *stack);
+int     stack_at(t_array *stack, int index);
 
 void	stack_print_a(void);
 void	stack_print_b(void);

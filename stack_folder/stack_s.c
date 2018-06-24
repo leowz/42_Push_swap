@@ -22,7 +22,7 @@ void	stack_exec_sa(void)
 			(cmd = malloc(sizeof(t_cmd))))
 	{
 		*cmd = sa;
-		ft_arrswap(ptr, 0, 1);
+		ft_arrswap(ptr, ptr->current_size - 1, ptr->current_size - 2);
 		if ((log = stack_result()))
 			ft_arrappend_raw(log, (void *)cmd, sizeof(t_cmd));
 	}
@@ -38,7 +38,7 @@ void	stack_exec_sb(void)
 			(cmd = malloc(sizeof(t_cmd))))
 	{
 		*cmd = sb;
-		ft_arrswap(ptr, 0, 1);
+		ft_arrswap(ptr, ptr->current_size - 1, ptr->current_size - 2);
 		if ((log = stack_result()))
 			ft_arrappend_raw(log, (void *)cmd, sizeof(t_cmd));
 	}
@@ -56,8 +56,8 @@ void	stack_exec_ss(void)
 			(ptr_b = stack_b()) && ptr_b->current_size > 1)
 	{
 		*cmd = ss;
-		ft_arrswap(ptr_a, 0, 1);
-		ft_arrswap(ptr_b, 0, 1);
+		ft_arrswap(ptr_a, ptr_a->current_size - 1, ptr_a->current_size - 2);
+		ft_arrswap(ptr_b, ptr_b->current_size - 1, ptr_b->current_size - 2);
 		if ((log = stack_result()))
 			ft_arrappend_raw(log, (void *)cmd, sizeof(t_cmd));
 	}

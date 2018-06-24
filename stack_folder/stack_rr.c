@@ -14,9 +14,9 @@
 
 void	stack_exec_rra(void)
 {
-	t_array	*ptr;
-	t_array	*log;
-	t_cmd	*cmd;
+	t_array		*ptr;
+	t_array		*log;
+	t_cmd		*cmd;
 
 	if ((ptr = stack_a()) && ptr->current_size > 1 &&
 			(cmd = malloc(sizeof(t_cmd))))

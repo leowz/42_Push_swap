@@ -12,6 +12,23 @@
 
 #include "stack.h"
 
+int		is_not_dup(int nbr)
+{
+    t_array	*stack;
+	int 	index;
+
+	if (!(stack = stack_a()))
+		return (FUN_FAIL);
+	index = stack->current_size - 1;
+	while (index > 0)
+	{
+		if (nbr == stack_at(stack, index))
+			return (FUN_FAIL);
+		index--;
+	}
+	return (FUN_SUCS);
+}
+
 void	stack_exec_push(int	nbr)
 {
 	t_array	*ptr;
@@ -54,21 +71,18 @@ int 	is_valid_number(const char *str)
 
 int		stack_exec_parse(int ac, char **av)
 {
+    int 	nbr;
+
 	while (ac > 1)
 	{
 		ac--;
-		av++;
-		ft_printf("ac %d\n", ac);
-		if (is_valid_number(*av))
+		if (is_valid_number(av[ac]) && is_not_dup((nbr = ft_atoi(av[ac]))))
 		{
-			ft_printf("valid av %s\n", *av);
-			int	num = ft_atoi(*av);
-			ft_printf("atoi %d\n", num);
-			stack_exec_push(num);
+			stack_exec_push(nbr);
 		}
 		else
 		{
-			ft_printf("not valid av %s\n", *av);
+			ft_printf("not valid av %s\n", av[ac]);
 			stack_exit();
 			return (FUN_FAIL);
 		}
