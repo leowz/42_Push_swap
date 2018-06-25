@@ -17,6 +17,12 @@ void    ps_print(void)
     //stack_print_a();
     //stack_print_b();
     //stack_print_cmd();
-    ft_printf("cmd size: %d\n", stack_result()->current_size);
-}
+    //ft_printf("cmd size: %d\n", stack_result()->current_size);
+    t_array *queue;
 
+    if ((queue = stack_result()) && queue->current_size > 0)
+    {
+        
+    }
+
+}

@@ -17,4 +17,7 @@
 
 
 void	ck_die(const char *str);
+void    ck_print_is_sorted(void);
+void    ck_exec_cmd(const char *line);
+void    ck_print_is_sorted(void);
 #endif

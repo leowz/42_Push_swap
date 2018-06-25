@@ -28,11 +28,11 @@ STC_SRC_NAME = stack_r.c stack_s.c stack_p.c stack_rr.c stack_singleton.c\
 
 HEADER_PATH = includes
 
-HEADER = push_swap.h 
+HEADER = checker.h
 
 SRC_PATH = srcs
 
-SRC_NAME = main.c 
+SRC_NAME = main.c ck_error.c ck_print_is_sorted.c ck_exec_cmd.c
 
 OBJ_PATH = obj
 
