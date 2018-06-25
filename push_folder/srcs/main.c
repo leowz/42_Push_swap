@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 17:40:53 by zweng             #+#    #+#             */
-/*   Updated: 2018/06/18 19:49:09 by zweng            ###   ########.fr       */
+/*   Updated: 2018/06/25 19:27:17 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int		main(int ac, char **av)
 	if (ac > 1)
 	{
 		stack_exec_parse(ac, av);
-		ps_print();
-		ft_printf("\n\n");
 		ps_sort();
 		ps_print();
 	}
