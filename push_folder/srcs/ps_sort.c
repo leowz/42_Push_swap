@@ -24,7 +24,7 @@ void    ps_sort(void)
         }
         if (ptr->current_size == 2)
         {
-            ft_printf("stack size 2\n");
+           // ft_printf("stack size 2\n");
             if (stack_at(ptr, 0) < stack_at(ptr, 1)) {
                 //ft_printf("sort stack sa\n");
                 stack_exec_sa();
@@ -32,12 +32,12 @@ void    ps_sort(void)
         }
         else if (ptr->current_size == 3) {
             //ft_printf("sort three\n");
-            //ps_sort_three_a();
-            ps_quick_sort();
+            ps_sort_three_a();
+            //ps_quick_sort();
         }
         else if (ptr->current_size < 20) {
             //ft_printf("sort insert\n");
-            //ps_insert_sort();
+           // ps_insert_sort();
             ps_quick_sort();
         }
         else {

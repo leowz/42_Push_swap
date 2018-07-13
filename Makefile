@@ -13,15 +13,62 @@
 CC = clang
 
 # ----- part to change -----
-NAME1 = push_swap
+PS_NAME = push_swap
 
-NAME2 = checker
+CK_NAME = checker
 
-NAME1_PATH = push_folder
+LIB_PATH = libft
 
-NAME2_PATH = check_folder
+LIB = $(LIB_PATH)/libft.a
 
-CURRENT_PATH = .
+STC_PATH = stack_folder
+
+STC_HEADER = stack.h
+
+STC_SRC_NAME = stack_r.c stack_s.c stack_p.c stack_rr.c stack_singleton.c\
+			   stack_exit.c stack_print.c stack_parse.c stack_is_sorted.c
+
+PS_PATH = push_folder
+
+PS_HEADER_PATH = $(PS_PATH)/includes
+
+PS_SRC_PATH = $(PS_PATH)/srcs
+
+PS_SRC_NAME = push_swap.c ps_print.c ps_quick_sort.c ps_insert_sort.c ps_small_sort.c\
+            ps_sort.c ps_quick_sort_a.c ps_quick_sort_b.c \
+			ps_sort_top.c ps_optim_cmd.c ps_optim1.c ps_optim2.c
+
+CK_PATH = check_folder
+
+CK_SRC_PATH = $(CK_PATH)/srcs
+
+CK_HEADER_PATH = $(CK_PATH)/includes
+
+CK_SRC_NAME = checker.c ck_error.c ck_print_is_sorted.c ck_exec_cmd.c
+
+HEADER = $(PS_HEADER_PATH)/push_swap.h $(CK_HEADER_PATH)/checker.h
+
+OBJ_PATH = obj
+
+PS_OBJ_NAME = $(PS_SRC_NAME:.c=.o) $(STC_SRC_NAME:.c=.o)
+
+CK_OBJ_NAME = $(CK_SRC_NAME:.c=.o) $(STC_SRC_NAME:.c=.o)
+
+CPPFLAGS = -I$(CK_HEADER_PATH) -I$(PS_HEADER_PATH) -I$(LIB_PATH)/includes -I$(STC_PATH)
+
+LDFLAGS = -L$(LIB_PATH) -fsanitize=address
+
+LDLIBS = -lft
+
+CFLAGS =  -Wall -Wextra -Werror
+
+# ----- part automatic -----
+PS_SRCS = $(addprefix $(PS_SRC_PATH)/,$(SRC_NAME)) \
+	   $(addprefix $(STC_PATH)/,$(STC_SRC_NAME))
+PS_OBJS = $(addprefix $(OBJ_PATH)/,$(PS_OBJ_NAME))
+CK_SRCS = $(addprefix $(CK_SRC_PATH)/,$(CK_SRC_NAME))\
+	   $(addprefix $(STC_PATH)/,$(STC_SRC_NAME))
+CK_OBJS = $(addprefix $(OBJ_PATH)/,$(CK_OBJ_NAME))
 
 # ----- Colors -----
 BLACK:="\033[1;30m"
@@ -34,34 +81,47 @@ EOC:="\033[0;0m"
 #  # ==================
 
 # ----- part rules -----
-all: $(NAME1) $(NAME2) 
+all: $(PS_NAME) $(CK_NAME)
 
-$(NAME1): $(NAME1_PATH)/$(NAME1)
-	@cp $(NAME1_PATH)/$(NAME1) $(CURRENT_PATH) 
+$(PS_NAME): $(LIB) $(PS_OBJS)
+	$(CC) $(PS_OBJS) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+	printf $(GREEN)"$(NAME) Finish linking\n"$(EOC)
 
-$(NAME1_PATH)/$(NAME1):
-	@make -C $(NAME1_PATH) 
+$(CK_NAME): $(LIB) $(CK_OBJS)
+	$(CC) $(CK_OBJS) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+	printf $(GREEN)"$(NAME) Finish linking\n"$(EOC)
 
-$(NAME2): $(NAME2_PATH)/$(NAME2)
-	@cp $(NAME2_PATH)/$(NAME2) $(CURRENT_PATH) 
+$(LIB):
+	@make -C $(LIB_PATH) fclean && make -C $(LIB_PATH)
 
-$(NAME2_PATH)/$(NAME2):
-	@make -C $(NAME2_PATH) 
-	
+$(OBJ_PATH)/%.o: $(PS_SRC_PATH)/%.c  $(HEADER) | $(OBJ_PATH)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+
+$(OBJ_PATH)/%.o: $(CK_SRC_PATH)/%.c  $(HEADER) | $(OBJ_PATH)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+
+$(OBJ_PATH)/%.o: $(STC_PATH)/%.c  $(STC_PATH)/$(STC_HEADER) | $(OBJ_PATH)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+
+$(OBJ_PATH):
+	mkdir $(OBJ_PATH) 2> /dev/null
 
 clean:
-	@make -C $(NAME1_PATH) clean
-	@make -C $(NAME2_PATH) clean
+	@rm -f $(PS_OBJS) $(CK_OBJS)
+	@rmdir $(OBJ_PATH) 2> /dev/null || true
+	@printf $(GREEN)"$(NAME) clean\n"$(EOC)
+	@make -C $(LIB_PATH) clean
 
-fclean:
-	@rm -f $(NAME1) $(NAME2)
-	@make -C $(NAME1_PATH) fclean
-	@make -C $(NAME2_PATH) fclean
+fclean: clean
+	@/bin/rm -f $(PS_NAME) $(CK_NAME)
+	@printf $(GREEN)"$(NAME) fclean\n"$(EOC)
+	@/bin/rm -f $(LIB)
+	@printf $(GREEN)"$(LIB) fclean\n"$(EOC)
 
 re: fclean all
 
 norme:
-	@make -C $(NAME1_PATH) norme
-	@make -C $(NAME2_PATH) norme
+	@norminette $(PS_SRCS) $(CK_SRCS)
+	@norminette $(HEADER)
 
 .PHONY: clean fclean all
