@@ -56,6 +56,7 @@ void	stack_exec_rrb(void);
 void	stack_exec_rrr(void);
 
 int		stack_exec_parse(int ac, char **av);
+void	stack_exec_push(int	nbr);
 int 	stack_is_sorted(t_array *stack);
 int 	stack_is_reverse_sorted(t_array *stack, int len);
 int     stack_at(t_array *stack, int index);

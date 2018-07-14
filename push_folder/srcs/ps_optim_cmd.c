@@ -13,9 +13,6 @@ void	ps_optim_cmd()
         ps_optim_pbpa(ptr);
         ps_optim_rrara(ptr);
         ps_optim_rrbrb(ptr);
-//        ps_optim_rarb(ptr);
-//        ps_optim_sasb(ptr);
-//        ps_optim_rrarrb(ptr);
     }
 }
 

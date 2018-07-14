@@ -17,3 +17,17 @@ void	stack_exit(void)
 	ft_dprintf(STDOUT_FILENO, "Error\n");
 	exit(-1);
 }
+
+void	stack_exec_push(int	nbr)
+{
+	t_array	*ptr;
+	int		*data;
+
+	if ((ptr = stack_a()) && (data = malloc(sizeof(int))))
+	{
+		*data = nbr;
+		ft_arrappend_raw(ptr, data, sizeof(int));
+	}
+	else
+		ft_printf("push %d error\n", nbr);
+}

@@ -22,17 +22,13 @@ void    ps_push_b_upside(int insert_index)
     {
         count = ptr_a->current_size - insert_index - 1;
         i = count;
-        while (i-- > 0) {
-            //ft_printf("push upside 1\n");
+        while (i-- > 0)
             stack_exec_ra();
-        }
         stack_exec_pa();
         stack_exec_sa();
         i = count;
-        while (i-- > 0) {
-            //ft_printf("push upside 2\n");
+        while (i-- > 0)
             stack_exec_rra();
-        }
     }
 }
 
@@ -44,17 +40,12 @@ void    ps_push_b_downside(int insert_index)
     if ((ptr_a = stack_a()))
     {
         i = insert_index;
-        //ft_printf("push downside insert index %d\n", insert_index);
-        while (i-- > 0) {
-            //ft_printf("push downside 1\n");
+        while (i-- > 0)
             stack_exec_rra();
-        }
         stack_exec_pa();
         i = insert_index + 1;
-        while (i-- > 0) {
-            //ft_printf("push downside 2\n");
+        while (i-- > 0)
             stack_exec_ra();
-        }
     }
 }
 
@@ -72,9 +63,7 @@ int    ps_find_insert_index(t_array *stack, const int ref)
             if (index < 0)
                 return (0);
             data = stack_at(stack, index);
-            //ft_printf("find insert index update data = %d\n", data);
         }
-        //ft_printf("inset index find is : %d\n", index);
         return (index + 1);
     }
     else
@@ -113,13 +102,10 @@ void    ps_insert_sort(void)
 
     if ((ptr_a = stack_a()) && (ptr_b = stack_b()))
     {
-        while (ptr_a->current_size > 3 && (!stack_is_sorted(ptr_a))) {
-            //ft_printf("push a to b\n");
+        while (ptr_a->current_size > 3 && (!stack_is_sorted(ptr_a)))
             stack_exec_pb();
-        }
         ps_sort_three_a();
         while (ptr_b->current_size > 0) {
-            //ft_printf("push b to a\n");
             ps_push_b_to_a();
             ps_push_b_to_a();
         }

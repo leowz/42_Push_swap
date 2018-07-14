@@ -17,10 +17,12 @@ int		main(int ac, char **av)
 	if (ac > 1)
 	{
 		stack_exec_parse(ac, av);
-		//ps_print();
 		ps_sort();
 		ps_optim_cmd();
 		ps_print();
+		delete_stack();
 	}
+//	while (1)
+//		;
 	return (0);
 }

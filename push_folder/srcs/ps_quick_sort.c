@@ -63,12 +63,8 @@ void    ps_quick_sort()
 
     if ((ptr_a = stack_a()) && (ptr_b = stack_b())
 			&& (ptr_cmd = stack_result()))
-    {
         ps_quick_sort_a(ptr_a, ptr_b, (int)ptr_a->current_size);
-    }
     else
-    {
         ft_printf("quick_sort: stack_a is null\n");
-    }
 }
 

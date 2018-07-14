@@ -49,7 +49,6 @@ int 	stack_is_sorted(t_array *stack)
     while (index > 0)
     {
         if (stack_at(stack, index) > stack_at(stack, index - 1)) {
-           // ft_printf("not sorted\n");
             return (FUN_FAIL);
         }
         index--;

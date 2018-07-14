@@ -50,7 +50,8 @@ int		main(int ac, char **av)
 		ck_get_input();
 		ck_print_is_sorted();
 	}
-	while (1)
-		;
+	delete_stack();
+	//while (1)
+	//	;
 	return (0);
 }

@@ -20,10 +20,7 @@ int		ps_top_is_sorted(t_array *ptr_a, int len)
 	{
 		if (stack_at(ptr_a, ptr_a->current_size - 1) >
 				stack_at(ptr_a, ptr_a->current_size - 2))
-		{
-//			ft_printf("ps top is sorted: sa\n");
 			stack_exec_sa();
-		}
 		return (FUN_SUCS);
 	}
 	if (len == 3 && (stack_at(ptr_a, ptr_a->current_size - 1) <
@@ -42,27 +39,17 @@ void	ps_sort_top(t_array *ptr_a, int len)
 	{
 		if (stack_at(ptr_a, ptr_a->current_size - 1) >
 				stack_at(ptr_a, ptr_a->current_size - 2))
-		{
-//			ft_printf("ps sort top: sa\n");
 			stack_exec_sa();
-		}
 		if (len > 2)
-		{
-//			ft_printf("ps sort top: ra\n");
 			stack_exec_ra();
-		}
 		len--;
 	}
 	while (++len < 3)
 	{
-//		ft_printf("ps sort top: rra\n");
 		stack_exec_rra();
 		if (stack_at(ptr_a, ptr_a->current_size - 1) >
 				stack_at(ptr_a, ptr_a->current_size - 2))
-		{
-//			ft_printf("ps sort top: sa\n");
 			stack_exec_sa();
-		}
 	}
 }
 
@@ -74,10 +61,7 @@ int		ps_top_is_reverse_sorted(t_array *ptr_b, int len)
 	{
 		if (stack_at(ptr_b, ptr_b->current_size - 1) <
 				stack_at(ptr_b, ptr_b->current_size - 2))
-		{
-//			ft_printf("ps reverse sort: sb\n");
 			stack_exec_sb();
-		}
 		return (FUN_SUCS);
 	}
 	if (len == 3 && (stack_at(ptr_b, ptr_b->current_size - 1) >
@@ -96,26 +80,16 @@ void	ps_reverse_sort_top(t_array *ptr_b, int len)
 	{
 		if (stack_at(ptr_b, ptr_b->current_size - 1) <
 				stack_at(ptr_b, ptr_b->current_size - 2))
-		{
-//			ft_printf("ps reverse sort top: sb\n");
 			stack_exec_sb();
-		}
 		if (len > 2)
-		{
-//			ft_printf("ps reverse sort top: rb\n");
 			stack_exec_rb();
-		}
 		len--;
 	}
 	while (++len < 3)
 	{
-//		ft_printf("ps reverse sort top: rrb\n");
 		stack_exec_rrb();
 		if (stack_at(ptr_b, ptr_b->current_size - 1) <
 				stack_at(ptr_b, ptr_b->current_size - 2))
-		{
-//			ft_printf("ps reverse sort top: sb\n");
 			stack_exec_sb();
-		}
 	}
 }

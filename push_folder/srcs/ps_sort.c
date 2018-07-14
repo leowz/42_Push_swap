@@ -18,33 +18,19 @@ void    ps_sort(void)
 
     if ((ptr = stack_a()))
     {
-        if (stack_is_sorted(ptr)) {
-            //ft_printf("stack a is sorted\n");
+        if (stack_is_sorted(ptr))
             return;
-        }
         if (ptr->current_size == 2)
         {
-           // ft_printf("stack size 2\n");
-            if (stack_at(ptr, 0) < stack_at(ptr, 1)) {
-                //ft_printf("sort stack sa\n");
+            if (stack_at(ptr, 0) < stack_at(ptr, 1))
                 stack_exec_sa();
-            }
         }
-        else if (ptr->current_size == 3) {
-            //ft_printf("sort three\n");
+        else if (ptr->current_size == 3)
             ps_sort_three_a();
-            //ps_quick_sort();
-        }
-        else if (ptr->current_size < 20) {
-            //ft_printf("sort insert\n");
-           // ps_insert_sort();
+        else if (ptr->current_size < 20)
             ps_quick_sort();
-        }
-        else {
-            //ft_printf("sort quick\n");
-            //ps_insert_sort();
+        else
             ps_quick_sort();
-        }
     }
     else
         ft_printf("stack a not exist");

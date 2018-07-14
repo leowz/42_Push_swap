@@ -36,7 +36,7 @@ PS_SRC_PATH = $(PS_PATH)/srcs
 
 PS_SRC_NAME = push_swap.c ps_print.c ps_quick_sort.c ps_insert_sort.c ps_small_sort.c\
             ps_sort.c ps_quick_sort_a.c ps_quick_sort_b.c \
-			ps_sort_top.c ps_optim_cmd.c ps_optim1.c ps_optim2.c
+			ps_sort_top.c ps_optim_cmd.c ps_optim1.c
 
 CK_PATH = check_folder
 
@@ -84,27 +84,27 @@ EOC:="\033[0;0m"
 all: $(PS_NAME) $(CK_NAME)
 
 $(PS_NAME): $(LIB) $(PS_OBJS)
-	$(CC) $(PS_OBJS) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
-	printf $(GREEN)"$(NAME) Finish linking\n"$(EOC)
+	@$(CC) $(PS_OBJS) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+	@printf $(GREEN)"$(PS_NAME) Finish linking\n"$(EOC)
 
 $(CK_NAME): $(LIB) $(CK_OBJS)
-	$(CC) $(CK_OBJS) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
-	printf $(GREEN)"$(NAME) Finish linking\n"$(EOC)
+	@$(CC) $(CK_OBJS) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+	@printf $(GREEN)"$(CK_NAME) Finish linking\n"$(EOC)
 
 $(LIB):
 	@make -C $(LIB_PATH) fclean && make -C $(LIB_PATH)
 
 $(OBJ_PATH)/%.o: $(PS_SRC_PATH)/%.c  $(HEADER) | $(OBJ_PATH)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 $(OBJ_PATH)/%.o: $(CK_SRC_PATH)/%.c  $(HEADER) | $(OBJ_PATH)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 $(OBJ_PATH)/%.o: $(STC_PATH)/%.c  $(STC_PATH)/$(STC_HEADER) | $(OBJ_PATH)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 $(OBJ_PATH):
-	mkdir $(OBJ_PATH) 2> /dev/null
+	@mkdir $(OBJ_PATH) 2> /dev/null
 
 clean:
 	@rm -f $(PS_OBJS) $(CK_OBJS)

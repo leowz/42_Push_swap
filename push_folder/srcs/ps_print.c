@@ -42,10 +42,6 @@ char	*ps_cmd_to_str(const t_cmd cmd)
 
 void    ps_print(void)
 {
-    //stack_print_a();
-    //stack_print_b();
-    //stack_print_cmd();
-    //ft_printf("cmd size: %d\n", stack_result()->current_size);
     t_array 	*queue;
 	t_arritem	*item;
 	int			index;
