@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 18:25:41 by zweng             #+#    #+#             */
-/*   Updated: 2018/06/18 19:46:46 by zweng            ###   ########.fr       */
+/*   Updated: 2018/07/20 13:22:43 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	stack_print_cmd(void)
 		{
 			if ((data = ft_arritem_at(ptr, index)) && data->content)
 			{
-				ft_printf("index %d -> %s\n", index, 
+				ft_printf("index %d -> %s\n", index,
 						stack_cmd_to_string((t_cmd *)(data->content)));
 				index--;
 			}

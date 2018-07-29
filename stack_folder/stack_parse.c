@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 15:16:51 by zweng             #+#    #+#             */
-/*   Updated: 2018/06/18 19:16:34 by zweng            ###   ########.fr       */
+/*   Created: 2018/07/20 13:22:08 by zweng             #+#    #+#             */
+/*   Updated: 2018/07/29 11:46:30 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int		is_not_dup(int nbr)
 {
-    t_array	*stack;
-	int 	index;
+	t_array	*stack;
+	int		index;
 
 	if (!(stack = stack_a()))
 		return (FUN_FAIL);
 	index = stack->current_size - 1;
-	while (index > 0)
+	while (index >= 0)
 	{
 		if (nbr == stack_at(stack, index))
 			return (FUN_FAIL);
@@ -29,7 +29,7 @@ int		is_not_dup(int nbr)
 	return (FUN_SUCS);
 }
 
-int 	is_valid_number(const char *str)
+int		is_valid_number(const char *str)
 {
 	int		sign;
 	long	nb;
@@ -44,6 +44,8 @@ int 	is_valid_number(const char *str)
 		sign = -1;
 	if ((*str == '-') || (*str == '+'))
 		str++;
+	if (!ft_isdigit(*str))
+		return (FUN_FAIL);
 	while (*str)
 	{
 		if (!ft_isdigit(*str))
@@ -69,16 +71,17 @@ int		tab_last_index(char **table)
 
 int		push_split(const char *str)
 {
-	char **table;
-	int 	i;
-	int 	nbr;
+	char	**table;
+	int		i;
+	int		nbr;
 
 	if ((table = ft_strsplit(str, ' ')))
 	{
-	    i = tab_last_index(table);
+		i = tab_last_index(table);
 		while (i >= 0)
 		{
-			if (is_valid_number(table[i]) && is_not_dup((nbr = ft_atoi(table[i]))))
+			if (is_valid_number(table[i]) &&
+					is_not_dup((nbr = ft_atoi(table[i]))))
 				stack_exec_push(nbr);
 			else
 				return (FUN_FAIL);
@@ -93,7 +96,8 @@ int		push_split(const char *str)
 
 int		stack_exec_parse(int ac, char **av)
 {
-    int 	nbr;
+	int		nbr;
+	t_array	*stack;
 
 	while (ac > 1)
 	{
@@ -106,10 +110,12 @@ int		stack_exec_parse(int ac, char **av)
 		}
 		else
 		{
-			ft_printf("not valid av %s\n", av[ac]);
 			stack_exit();
 			return (FUN_FAIL);
 		}
 	}
-	return (FUN_SUCS);
+	if ((stack = stack_a()) && (int)stack->current_size > 0)
+		return (FUN_SUCS);
+	else
+		return (FUN_FAIL);
 }

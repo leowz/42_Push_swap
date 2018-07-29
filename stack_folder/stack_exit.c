@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 17:50:53 by zweng             #+#    #+#             */
-/*   Updated: 2018/06/18 17:54:39 by zweng            ###   ########.fr       */
+/*   Updated: 2018/07/20 13:19:56 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ void	stack_exit(void)
 	exit(-1);
 }
 
-void	stack_exec_push(int	nbr)
+void	stack_exec_push(int nbr)
 {
 	t_array	*ptr;
 	int		*data;
 
-	if ((ptr = stack_a()) && (data = malloc(sizeof(int))))
+	if ((ptr = stack_a()) &&
+			(data = malloc(sizeof(int))))
 	{
 		*data = nbr;
 		ft_arrappend_raw(ptr, data, sizeof(int));

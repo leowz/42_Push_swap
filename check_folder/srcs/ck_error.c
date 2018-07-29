@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/24 18:22:47 by zweng             #+#    #+#             */
-/*   Updated: 2018/06/24 18:24:04 by zweng            ###   ########.fr       */
+/*   Updated: 2018/07/20 13:59:27 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ck_die(const char *str)
 {
-	ft_dprintf(STDERR_FILENO, "checker error: %s\n", str);
+	ft_dprintf(STDERR_FILENO, "%s\n", str);
 	exit(1);
 }

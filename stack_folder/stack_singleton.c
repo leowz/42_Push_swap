@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/17 14:22:11 by zweng             #+#    #+#             */
-/*   Updated: 2018/06/17 17:53:13 by zweng            ###   ########.fr       */
+/*   Updated: 2018/07/20 13:23:37 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	delete_items(t_array *arr)
 
 void	delete_stack(void)
 {
-    t_array	*s1;
+	t_array	*s1;
 	t_array	*s2;
 	t_array	*r;
 

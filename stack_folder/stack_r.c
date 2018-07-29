@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/17 16:33:27 by zweng             #+#    #+#             */
-/*   Updated: 2018/06/18 19:34:17 by zweng            ###   ########.fr       */
+/*   Updated: 2018/07/20 13:23:05 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ void	stack_exec_rb(void)
 
 void	stack_exec_rr(void)
 {
-    stack_exec_ra();
+	stack_exec_ra();
 	stack_exec_rb();
 }

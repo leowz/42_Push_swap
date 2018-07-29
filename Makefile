@@ -6,7 +6,7 @@
 #    By: zweng <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 18:11:43 by zweng             #+#    #+#              #
-#    Updated: 2018/06/25 19:10:24 by zweng            ###   ########.fr        #
+#    Updated: 2018/07/29 11:56:35 by zweng            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ CK_OBJ_NAME = $(CK_SRC_NAME:.c=.o) $(STC_SRC_NAME:.c=.o)
 
 CPPFLAGS = -I$(CK_HEADER_PATH) -I$(PS_HEADER_PATH) -I$(LIB_PATH)/includes -I$(STC_PATH)
 
-LDFLAGS = -L$(LIB_PATH) -fsanitize=address
+LDFLAGS = -L$(LIB_PATH) 
 
 LDLIBS = -lft
 
@@ -109,12 +109,12 @@ $(OBJ_PATH):
 clean:
 	@rm -f $(PS_OBJS) $(CK_OBJS)
 	@rmdir $(OBJ_PATH) 2> /dev/null || true
-	@printf $(GREEN)"$(NAME) clean\n"$(EOC)
+	@printf $(GREEN)"$(PS_NAME) $(CK_NAME) clean\n"$(EOC)
 	@make -C $(LIB_PATH) clean
 
 fclean: clean
 	@/bin/rm -f $(PS_NAME) $(CK_NAME)
-	@printf $(GREEN)"$(NAME) fclean\n"$(EOC)
+	@printf $(GREEN)"$(PS_NAME) $(CK_NAME) fclean\n"$(EOC)
 	@/bin/rm -f $(LIB)
 	@printf $(GREEN)"$(LIB) fclean\n"$(EOC)
 

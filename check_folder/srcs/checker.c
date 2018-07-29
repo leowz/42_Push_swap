@@ -6,7 +6,7 @@
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 17:40:53 by zweng             #+#    #+#             */
-/*   Updated: 2018/06/24 18:53:08 by zweng            ###   ########.fr       */
+/*   Updated: 2018/07/29 11:53:30 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		ck_check_cmd_valid(const char *str)
 	return (FUN_FAIL);
 }
 
-void	ck_get_input()
+void	ck_get_input(void)
 {
 	char	*line;
 
@@ -32,26 +32,22 @@ void	ck_get_input()
 	{
 		if (ck_check_cmd_valid(line))
 			ck_exec_cmd(line);
-		else {
-			ft_printf("cmd: %s\n", line);
-			ck_die("cmd not valid\n");
+		else
+		{
+			ck_die("Error");
 		}
 		ft_strdel(&line);
 	}
 	ft_strdel(&line);
 }
 
-
 int		main(int ac, char **av)
 {
-	if (ac > 1)
+	if (ac > 1 && stack_exec_parse(ac, av))
 	{
-		stack_exec_parse(ac, av);
 		ck_get_input();
 		ck_print_is_sorted();
 	}
 	delete_stack();
-	//while (1)
-	//	;
 	return (0);
 }

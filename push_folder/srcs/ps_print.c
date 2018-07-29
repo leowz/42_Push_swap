@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zweng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/24 12:24:53 by zweng             #+#    #+#             */
-/*   Updated: 2018/06/25 19:24:39 by zweng            ###   ########.fr       */
+/*   Created: 2018/07/20 12:38:33 by zweng             #+#    #+#             */
+/*   Updated: 2018/07/20 12:38:37 by zweng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ char	*ps_cmd_to_str(const t_cmd cmd)
 	return (NULL);
 }
 
-void    ps_print(void)
+void	ps_print(void)
 {
-    t_array 	*queue;
+	t_array		*queue;
 	t_arritem	*item;
 	int			index;
 
 	index = 0;
-    if ((queue = stack_result()) && queue->current_size > 0)
-    {
+	if ((queue = stack_result()) && queue->current_size > 0)
+	{
 		while (index < (int)queue->current_size)
 		{
 			if ((item = ft_arritem_at(queue, index)))
@@ -57,5 +57,5 @@ void    ps_print(void)
 			}
 			index++;
 		}
-    }
+	}
 }
